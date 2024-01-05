@@ -13,6 +13,7 @@ export default class NewBill {
     this.fileUrl = null
     this.fileName = null
     this.billId = null
+	this.formData = null
     new Logout({ document, localStorage, onNavigate })
   }
 
@@ -20,25 +21,25 @@ export default class NewBill {
     e.preventDefault()
 	const input = this.document.querySelector(`input[data-testid="file"]`)
     const file = input.files[0]
-    const filePath = e.target.value.split(/\\/g)
-    const fileName = filePath[filePath.length-1]
-   
-	if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpeg' ) {
-		console.log('image ok', file );
+	if (!file) {
+		input.value = ''
+		this.document.querySelector(`span[data-testid="file-error"]`).textContent = 'Aucun fichier sélectionné'
+	} else if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg') {
+		const filePath = e.target.value.split(/\\/g)
+		const fileName = filePath[filePath.length-1]
 		const formData = new FormData()
 		const email = JSON.parse(localStorage.getItem("user")).email
 		formData.append('file', file)
 		formData.append('email', email)
 		this.formData = formData
 		this.fileName = fileName
-		this.document.querySelector('.errorInput').textContent = ''
+		this.document.querySelector(`span[data-testid="file-error"]`).textContent = ''
 	} else {
 		input.value = ''
-		const errorInput = document.querySelector('.errorInput')
-		errorInput.style.color = 'red'
-		return errorInput.textContent = 'le fichier sélectionné est au mauvais format'
+		this.document.querySelector(`span[data-testid="file-error"]`).textContent = 'le fichier sélectionné est au mauvais format'
  	}
 }
+
 handleSubmit = e => {
 	e.preventDefault()
 	  if (!this.formData) return null
@@ -52,7 +53,6 @@ handleSubmit = e => {
 			  }
 			})
 			.then(({fileUrl, key}) => {
-			  console.log(fileUrl)
 			  this.billId = key
 			  this.fileUrl = fileUrl
 			})
@@ -75,7 +75,6 @@ handleSubmit = e => {
 				// this.onNavigate(ROUTES_PATH['Bills'])
 			})
 			.catch(error => console.error(error))
-
   }
 
   // not need to cover this function by tests
