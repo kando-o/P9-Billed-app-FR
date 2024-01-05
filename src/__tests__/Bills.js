@@ -117,7 +117,7 @@ describe("Given I am connected as an employee", () => {
     test('should return formatted bills', async () => {
       document.body.innerHTML = BillsUI({ data: bills })
       const bills = new Bills({document, onNavigate, store: storeMock, localStorage: window.localStorage})
-      const originalData = await bills.store.bills().list()
+      const originalData = await (bills.store.bills().list())
       
       console.log(originalData);
 
