@@ -14,7 +14,6 @@ import { bills } from "../fixtures/bills"
 import router from "../app/Router"
 
 jest.mock("../app/store", () => mockStore)
-
 describe('Given I am connected as an Admin', () => {
   describe('When I am on Dashboard page, there are bills, and there is one pending', () => {
     test('Then, filteredBills by pending status should return 1 bill', () => {
@@ -284,6 +283,7 @@ describe("Given I am a user connected as Admin", () => {
         }})
       window.onNavigate(ROUTES_PATH.Dashboard)
       await new Promise(process.nextTick);
+
       const message = await screen.getByText(/Erreur 404/)
       expect(message).toBeTruthy()
     })
@@ -306,4 +306,3 @@ describe("Given I am a user connected as Admin", () => {
 
   })
 })
-
