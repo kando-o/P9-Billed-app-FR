@@ -13,21 +13,13 @@ export const ROUTES_PATH = {
 export const ROUTES = ({ pathname, data, error, loading }) => {
   switch (pathname) {
     case ROUTES_PATH['Login']:
-<<<<<<< HEAD
       return LoginUI({ data, error, loading })
-=======
-      return LoginUI({ data, error:'test Login', loading })
->>>>>>> fix-bug-DisplayDashboard
     case ROUTES_PATH['Bills']:
       return BillsUI({ data, error, loading })
     case ROUTES_PATH['NewBill']:
       return NewBillUI()
     case ROUTES_PATH['Dashboard']:
-<<<<<<< HEAD
       return DashboardUI({ data, error, loading })
-=======
-      return DashboardUI({ data, error:'Test error', loading })
->>>>>>> fix-bug-DisplayDashboard
     default:
       return LoginUI({ data, error, loading })
   }

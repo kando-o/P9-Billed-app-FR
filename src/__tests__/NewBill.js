@@ -2,19 +2,6 @@
  * @jest-environment jsdom
  */
 
-<<<<<<< HEAD
-import { screen } from "@testing-library/dom"
-import NewBillUI from "../views/NewBillUI.js"
-import NewBill from "../containers/NewBill.js"
-
-
-describe("Given I am connected as an employee", () => {
-  describe("When I am on NewBill Page", () => {
-    test("Then ...", () => {
-      const html = NewBillUI()
-      document.body.innerHTML = html
-      //to-do write assertion
-=======
 import { screen, fireEvent, waitFor} from "@testing-library/dom"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
@@ -111,7 +98,6 @@ describe("Given I am connected as an employee", () => {
       await waitFor(() => {
         expect(screen.getByText("Mes notes de frais")).toBeTruthy()
       })
->>>>>>> fix-bug-DisplayDashboard
     })
   })
 })
