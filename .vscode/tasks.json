@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "front-serve",
+            "type": "shell",
+            "command": "live-server;exec zsh",
+            "presentation": {
+                "group": "front"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "icon": {
+                "id": "rocket",
+                "color": "terminal.ansiCyan"
+            }
+        },
+        {
+            "label": "git-front",
+            "type": "shell",
+            "command": "git checkout;exec zsh",
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "presentation": {
+                "group": "front"
+            },
+            "icon": {
+                "id": "git-pull-request",
+                "color": "terminal.ansiMagenta"
+            }
+        },
+        {
+            "label": "jest-front",
+            "type": "shell",
+            "command": "exec zsh",
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "presentation": {
+                "group": "front"
+            },
+            "icon": {
+                "id": "microscope",
+                "color": "terminal.ansiGreen"
+            }
+        }
+    ]
+}
